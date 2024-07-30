@@ -1,12 +1,21 @@
 import math
 
-s1 = int(input("Enter perpendicular side length"))
-s2 = int(input("Enter base side length"))
+# Given values
+a = int(input("Enter perpendicular side: "))  # One side
+b = int(input("Enter base side: "))  # Another side
+angle_deg = int(input("Enter angle between perpendicular and base side: "))  # Angle in degrees
 
-#sinx=p/h
-#h=p/sinx
-x = int(input("Enter angle between perpendicular and base"))
+# Convert angle to radians
+angle_rad = math.radians(angle_deg)
 
-sinx = math.sin(x)
-h = s1/sinx
-print(h)
+# Calculate the third side
+# Using Pythagorean theorem for right-angled triangle
+c = math.sqrt(a**2 + b**2) if angle_deg == 90 else (
+    a / math.cos(angle_rad) if a else (
+        b / math.sin(angle_rad) if b else (
+            math.sqrt(a**2 + b**2)
+        )
+    )
+)
+
+print(f"The third side of the triangle is: {c}")
